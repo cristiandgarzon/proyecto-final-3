@@ -16,11 +16,6 @@
     
   
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,6 +76,10 @@
                     <i class="fa-solid fa-user"></i>
                     <button><a href="/views/maestro/perfil.php">Perfil</a></button>
                 </div>
+                <div>
+                   <i class="fa-solid fa-hand-point-left"></i>
+                    <button><a href="/views/maestro/dashboard.php">volver</a></button>
+                </div>
 
 
             </div>
@@ -95,21 +94,56 @@
     </section>
     <main class="w-[100%] flex flex-col  ">
         <header class=" bg-white flex   justify-between w-[100%] mb-4 items-center">
-            <h1 class="text-2xl">Dashboard</h1>
+            <h1 class="text-2xl">Editar Datos de Perfil</h1>
             <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-5"><a
                     href="/views/maestro/dashboard.php">Home</a></button>
         </header>
-        <main>
-            <section class=" bg-white ">
-                <h3>Bienvenido</h3>
-                <P>Selecciona la accion que quieras realizar en las pestañas de la izquierda</P>
-            </section>
-        </main>
+        <section class="w-[100%]">
+            <?php
+            $maestro_id = $_SESSION["user_data"]["usuario_id"];
+
+            require_once($_SERVER["DOCUMENT_ROOT"] ."/config/database.php");
+            try{
+                
+                $stmnt=$pdo->query("SELECT * FROM usuarios WHERE  usuario_id = '$maestro_id' ");
+                    if($stmnt->rowCount() === 1 ){
+                        $result=$stmnt->fetch(PDO::FETCH_ASSOC);
+                        
+                        
+    
+                    }
+    
+                }catch (PDOException $e){
+                    echo" Error: " . $e->getMessage();
+                
+                }
+               
+                ?>
+            
+            <form class="flex flex-col  bg-white p-4 border rounded shadow-lg" 
+            action="/handledb/maestros/editarPerfil.php " method="POST">
+                <input type="number" hidden name="user_id" value="<?=$maestro_id?>">
+                <label class="block text-gray-700 font-bold mb-2">Correo Electronico</label>
+                <input class="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-500" type="email" name="correo" value="<?=$result["correo"]?>">
+                <label class="block text-gray-700 font-bold mt-2 mb-2">contraseña ingresa para cambiar la contraseña</label>
+                <input class="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-500" type="password" required name="contrasena">
+                <label class="block text-gray-700 font-bold mb-2 mt-2">Nombres</label>
+                <input class="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-500" type="text" name="nombre" value='<?=$result["usuario_nombre"]?>'>
+                <label class="block text-gray-700 font-bold mb-2 mt-2">Direcccion</label>
+                <input class="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-500" type="text" name="direccion" value="<?=$result["direccion"]?>">
+                <label class="block text-gray-700 font-bold mb-2 mt-2">Fecha de Nacimiento</label>
+                <input class="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-500"type="text" name="fecha" value="<?=$result['fecha_nacimientgo']?>">
+
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded m-5">Enviar</button>
+                
+            </form>
+
+
+            
+            
+            
+            
+            
+            
+        </section>
     </main>
-
-
-</body>
-
-</html>
-
-</html>

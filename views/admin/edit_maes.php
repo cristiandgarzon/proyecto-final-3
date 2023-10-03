@@ -96,6 +96,10 @@
     </section>
 
     <section class="flex  flex-col justify-center items-center h-screen  pl-72">
+    <button class="btn-primary"><a href="/views/admin/dashboard.php">Home</a></button>
+    <div>
+        
+    </div>
         <form action="/handledb/maestros/edit.php" method="POST" class="flex flex-col">
             <?php
             require_once($_SERVER["DOCUMENT_ROOT"] ."/config/database.php");
@@ -166,7 +170,7 @@
             <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Guardar</button>
         </form>
 
-        <button><a href="/views/admin/dashboard.php">Home</a></button>
+        
 
         <button><a href="/views/admin/maestros.php">Back</a></button>
     </section>

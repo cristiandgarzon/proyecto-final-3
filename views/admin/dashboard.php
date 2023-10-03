@@ -87,7 +87,7 @@
                 </div>
                 <div>
                 <i class="fa-solid fa-chalkboard"></i>
-                <button><a href="/views/admin/clases.php"></a>Clases</button>
+                <button><a href="/views/admin/clases.php">Clases</a></button>
                 </div>
 
             </div>

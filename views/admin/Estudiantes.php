@@ -133,7 +133,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+        <?php
         require_once($_SERVER["DOCUMENT_ROOT"] ."/config/database.php");
         try{
            $rolId=3;

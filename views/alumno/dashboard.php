@@ -73,12 +73,63 @@
     </section>
     <main>
         <h1>Lista de materias</h1>
+        <section>
         <?php
         require_once($_SERVER["DOCUMENT_ROOT"] ."/config/database.php");
+        $alumno_id=$_SESSION["user_data"]['usuario_id'];
+        try{
+            $stmt = $pdo->query("SELECT m.materia_id, m.materia_nombre
+            FROM materias AS m
+            JOIN almnos_materias AS am ON m.materia_id = am.materia_id
+            WHERE am.alumno_id = $alumno_id");
+             
+            $materias=$stmt->fetch(PDO::FETCH_ASSOC);
+            var_dump($materias);
+
+
+        }catch (PDOException $e){
+            echo" Error: " . $e->getMessage();
+        
+        }
         
 
 
         ?>
+
+        </section>
+        <section>
+        <?php 
+        require_once($_SERVER["DOCUMENT_ROOT"] ."/config/database.php");
+        $alumno_id=$_SESSION["user_data"]['usuario_id'];
+        try{
+                $sql = "SELECT m.materia_id, m.materia_nombre
+                        FROM materias AS m
+                        LEFT JOIN almnos_materias AS am ON m.materia_id = am.materia_id
+                        WHERE am.alumno_id IS NULL
+                        OR am.alumno_id <> :alumno_id";
+            
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':alumno_id', $alumno_id, PDO::PARAM_INT);
+                $stmt->execute();
+            
+                $materias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+                var_dump($materias);
+
+
+
+        }catch (PDOException $e){
+            echo" Error: " . $e->getMessage();
+        
+        };
+
+        
+       
+         ?>
+        </section>
+        
+       
+
 
         
     </main>
