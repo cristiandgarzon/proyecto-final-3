@@ -1,6 +1,6 @@
 Proyecto Final nivel 3 
 
-en este proyecto hay unos cuantos cambios al diseño y la funcionalidad, que explicare a continuacion:  
+en este proyecto hay unos cuantos cambios al diseño y la funcionalidad, que explicare a continuacion:  el correo maesto@maestro tiene como contraseña "lala"
 
 1. las vistas de administrador estan en su mayoria completas, la unica que hace falta es la de "permisos" al ser la menos importante la deje para el final y no me dio tiempo de crearlas. 
 2. todos los usuarios Maestros o alumnos son creados con una contraseña default "maestro" para los maestros y "alumno" para los alumnos ellos pueden cambiar su propia contraseña una vez se loguean
@@ -10,4 +10,4 @@ en este proyecto hay unos cuantos cambios al diseño y la funcionalidad, que exp
 6. en cuanto al diseño se cambio el UI para dejar todas las opciones a la izquierda salvo algunas exepciones en el boton Home y vistas en  maestros.  
 7. La base de datos usada para este proyecto esta incluida como dump_database-proyectofinal-,sql.
 
-este fue un gran reto, y aun cuando no esta completo aun di mi mejor esfuerzo espero sea de su agrado. 
+este fue un gran reto, y aun cuando no esta completo aun di mi mejor esfuerzo espero sea de su agrado.
