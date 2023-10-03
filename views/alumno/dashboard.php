@@ -84,7 +84,7 @@
             WHERE am.alumno_id = $alumno_id");
              
             $materias=$stmt->fetch(PDO::FETCH_ASSOC);
-            var_dump($materias);
+            //var_dump($materias);
 
 
         }catch (PDOException $e){
@@ -113,8 +113,8 @@
                 $stmt->execute();
             
                 $materias = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-                var_dump($materias);
+            //acabamos de traer la lista de materias disponbles falta poderlas seleccionar y añadirlas a las materias inscritas
+                //var_dump($materias);
 
 
 
